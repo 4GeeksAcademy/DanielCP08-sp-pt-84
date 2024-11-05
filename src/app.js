@@ -29,6 +29,11 @@ window.onload = function() {
   let suitTop = document.getElementById("suit-top");
   let numberCard = document.getElementById("number");
   let suitBot = document.getElementById("suit-bot");
+  let btnShuffle = document.getElementById("button-shuffle");
+
+  btnShuffle.addEventListener("click", onload);
+
+  setTimeout(onload, 10000);
 
   suitTop.style.textAlign = "left";
   suitTop.style.fontSize = "90px";
