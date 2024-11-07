@@ -31,28 +31,49 @@ window.onload = function() {
   let suitBot = document.getElementById("suit-bot");
   let btnShuffle = document.getElementById("button-shuffle");
 
-  btnShuffle.addEventListener("click", onload);
+  let scaleValue = 1;
+  let increaseButton = document.getElementById("increase-size");
+  let decreaseButton = document.getElementById("decrease-size");
 
-  setTimeout(onload, 10000);
-
-  suitTop.style.textAlign = "left";
-  suitTop.style.fontSize = "90px";
-
-  suitBot.style.textAlign = "left";
-  suitBot.style.rotate = "180deg";
-  suitBot.style.fontSize = "90px";
-
-  numberCard.style.fontSize = "126px";
-
+  // Generar valores de carta aleatoria
   let randomSuit = Math.floor(Math.random() * 4);
   let randomNumber = Math.floor(Math.random() * 13);
 
   numberCard.innerHTML = numbers[randomNumber];
-
   suitTop.innerHTML = suits[randomSuit];
   suitBot.innerHTML = suits[randomSuit];
+
   if (suits[randomSuit] == "♥" || suits[randomSuit] == "♦") {
     suitTop.style.color = "red";
     suitBot.style.color = "red";
   }
+
+  // Escuchar el evento del botón de shuffle
+  btnShuffle.addEventListener("click", () => {
+    location.reload();
+  });
+
+  // Cambiar el tamaño de la carta
+  increaseButton.addEventListener("click", () => {
+    scaleValue += 0.1; // Aumenta el tamaño
+    card.style.transform = `scale(${scaleValue})`;
+  });
+
+  decreaseButton.addEventListener("click", () => {
+    scaleValue = Math.max(0, scaleValue - 0.1); // Disminuye el tamaño, max a 0
+    card.style.transform = `scale(${scaleValue})`;
+  });
+
+  setTimeout(() => {
+    location.reload();
+  }, 15000);
+
+  suitTop.style.textAlign = "left";
+  suitTop.style.fontSize = "6em";
+
+  suitBot.style.textAlign = "left";
+  suitBot.style.rotate = "180deg";
+  suitBot.style.fontSize = "6em";
+
+  numberCard.style.fontSize = "8em";
 };
